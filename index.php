@@ -16,6 +16,7 @@
             justify-content: center;
             align-items: center;
             z-index: 2;
+            pointer-events: none;
         }
         #circle {
             width: 30px;
@@ -24,6 +25,7 @@
             border-radius: 50%;
             position: absolute;
             z-index: 1;
+            pointer-events: none;
         }
     </style>
 </head>
