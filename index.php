@@ -15,6 +15,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            z-index: 2;
         }
         #circle {
             width: 30px;
@@ -22,6 +23,7 @@
             background-color: blue;
             border-radius: 50%;
             position: absolute;
+            z-index: 1;
         }
     </style>
 </head>
