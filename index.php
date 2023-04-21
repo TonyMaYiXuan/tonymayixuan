@@ -17,8 +17,8 @@
             align-items: center;
         }
         #circle {
-            width: 50px;
-            height: 50px;
+            width: 30px;
+            height: 30px;
             background-color: blue;
             border-radius: 50%;
             position: absolute;
@@ -31,7 +31,7 @@
         <div id="game-region">
             <div id="circle"></div>
         </div>
-        <section id="contact">
+        <!-- <section id="contact">
             <h2>Contact Us</h2>
             <form>
                 <label for="name">Name:</label>
@@ -43,6 +43,7 @@
                 <button type="submit">Send</button>
             </form>
         </section>
+        -->
     </main>
     <?php include 'footer.php'; ?>
     <script src="mainScript.js"></script>
