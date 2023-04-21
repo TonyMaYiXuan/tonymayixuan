@@ -2,7 +2,7 @@ const canvas = document.createElement("canvas");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 document.body.appendChild(canvas);
-element.style.zIndex = 3;
+canvas.style.zIndex = 3;
 
 const context = canvas.getContext("2d");
 const radius = 40;
