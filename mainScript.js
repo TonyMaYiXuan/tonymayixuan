@@ -12,35 +12,37 @@ var isDragging = false;
 var newX;
 var newY;
 
-function animateCircle() {
+function showCircle() {
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.beginPath();
     context.arc(x, y, radius, 0, Math.PI * 2);
     context.fillStyle = "green";
     context.fill();
-    requestAnimationFrame(animateCircle);
+    requestAnimationFrame(showCircle);
 }
 
-animateCircle();
+showCircle();
 
-canvas.addEventListener("mousedown", function(event) {
+function updateCircle(mousedown = false) {
     const rect = canvas.getBoundingClientRect();
     newX = event.clientX - rect.left;
     newY = event.clientY - rect.top;
-    if ((newX - x, 2) * (newX - x, 2) + (newY - y, 2) * (newY - y, 2) <= radius * radius) {
+    if (mousedown && ((newX - x, 2) * (newX - x, 2) + (newY - y, 2) * (newY - y, 2) <= radius * radius)) {
         isDragging = true;
     }
+    if (isDragging) {
+        x = newX;
+        y = newY;
+        showCircle();
+    }
+}
+
+canvas.addEventListener("mousedown", function(event) {
+    updateCircle(true);
 });
 
 canvas.addEventListener("mousemove", function(event) {
-    if (isDragging) {
-        const rect = canvas.getBoundingClientRect();
-        x = newX;
-        y = newY;
-        animateCircle();
-        console.log("Mouse is moving!");
-        console.log("Mouse position: ", event.clientX, event.clientY);
-    }
+    updateCircle();
 });
 
 canvas.addEventListener("mouseup", function(event) {
