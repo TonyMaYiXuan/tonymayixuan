@@ -1,24 +1,30 @@
-const circle = document.getElementById("circle");
-const gameRegion = document.getElementById("game-region");
-const gameRegionWidth = gameRegion.clientWidth;
-const gameRegionHeight = gameRegion.clientHeight;
-const circleRadius = parseInt(getComputedStyle(circle).getPropertyValue("width")) / 2;
-const speed = 3;
-let x = gameRegionWidth / 2;
-let y = gameRegionHeight / 2;
-let dx = speed;
-let dy = speed;
+const canvas = document.createElement("canvas");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+document.body.appendChild(canvas);
+
+const context = canvas.getContext("2d");
+const radius = 80;
+let x = canvas.width / 2;
+let y = canvas.height / 2;
+let dx = 5;
+let dy = 5;
 
 function animateCircle() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
     x += dx;
     y += dy;
-    if (x + circleRadius >= gameRegionWidth || x - circleRadius <= 0) {
+    if (x + radius >= canvas.width || x - radius <= 0) {
         dx = -dx;
     }
-    if (y + circleRadius >= gameRegionHeight || y - circleRadius <= 0) {
+    if (y + radius >= canvas.height || y - radius <= 0) {
         dy = -dy;
     }
-    circle.style.left = x - circleRadius + "px";
-    circle.style.top = y - circleRadius + "px";
+    context.beginPath();
+    context.arc(x, y, radius, 0, Math.PI * 2);
+    context.fillStyle = "blue";
+    context.fill();
+    requestAnimationFrame(animateCircle);
 }
-setInterval(animateCircle, 20);
+
+animateCircle();
